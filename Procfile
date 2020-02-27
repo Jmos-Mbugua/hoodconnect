@@ -1,0 +1,1 @@
+web: gunicorn hoodconnect_project.wsgi --log-file -
