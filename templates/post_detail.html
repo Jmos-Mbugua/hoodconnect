@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row m-3">
+        <div class="col">
+            <h1> {{ post.title }} </h1>
+                <hr>
+                <p>{{post.description}}</p>
+                <p>Posted by: {{user.username}}, on {{post.date}}</p>
+                
+        </div>
+    </div>
+</div>
+    
+{% endblock content %}
