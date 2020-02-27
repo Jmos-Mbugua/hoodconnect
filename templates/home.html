@@ -7,9 +7,60 @@
 {% endblock title %}
 
 {% block content %}
- 
+<div class="jumbotron text-center bg-light">
+    <h1 class="display-4">What's going on around you?</h1>
+    <p class="lead">HoodConnect enables you to stay connected to your neighbourhood, see posts of what is going on and get details of businesses and health centers around you.</p>
+    <hr class="my-4">
+    <p>Stay Connected, Engage, and have fun.</p>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href="{% url 'upload_post' %}" role="button">Upload Post</a>
+    </p>
+</div>
 
-<h1>First display</h1>
+<div class="container">
+<div class="row">
+    <div class="col-md-8 m-1">
+        {% for post in object_list %}
+        <div class="row border mb-2">
+            <img src="{{post.image.url}}" style="width: 250px; height: 250px;" alt="posted image">
+            <div class="col-md-7">
+                <h1> {{ post.title }} </h1>
+                <hr>
+                <p>{{post.description}}</p>
+                <p>by {{user.username}}, {{post.date}}</p>
+                
+                    <button type="button" class="btn btn-primary btn-sm"><a href="{% url 'post_edit' post.pk %}" class="text-white" >Edit Post</a></button>
+                    <button type="button" class="btn btn-secondary btn-sm"><a href="{% url 'post_detail' post.pk %}"  class="text-white">read more <i class="fas fa-angle-right"></i></a></button>
+                
+            </div>
+           
+        </div>
+        {% endfor  %}
+    </div> 
+    
+    <div class="col-md-3 border">
+        <h2>Businesses</h2>
+        <hr>
+        <div class="list-group">
+            {% for post in object_list %}
+            <button type="button" class="list-group-item list-group-item-action">
+                <a href="{% url 'businesses' %}">{{ post.business.name }}</a>
+              
+            </button>
+            
+            {% endfor %}
+        </div>
+    </div>
+
+
+        
+</div>      
+</div>  
+ 
+       
+        
+
+
 
 
 
